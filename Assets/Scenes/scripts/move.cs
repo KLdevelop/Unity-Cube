@@ -5,7 +5,6 @@ using static System.Math;
 
 public class move : MonoBehaviour
 {
-    //public Transform _target;
     public float speed = 3f;
     public GameObject player; 
 
