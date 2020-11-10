@@ -7,7 +7,6 @@ public class move : MonoBehaviour
 {
     //public Transform _target;
     public float speed = 3f;
-    public float speedRotation = 1.5f;
     public GameObject player; 
 
     void Start()
@@ -31,11 +30,11 @@ public class move : MonoBehaviour
         } 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) 
         { 
-            player.transform.Rotate(Vector3.down * speedRotation); 
+            player.transform.position -= player.transform.right * speed * Time.deltaTime; 
         } 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) 
         { 
-            player.transform.Rotate(Vector3.up * speedRotation); 
+            player.transform.position += player.transform.right * speed * Time.deltaTime; 
         } 
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -45,7 +44,7 @@ public class move : MonoBehaviour
             {
                 Vector3 rot = transform.eulerAngles;
                 transform.LookAt(hit.point);
-                transform.eulerAngles = new Vector3(rot.x, transform.eulerAngles.y - 90, rot.z);
+                transform.eulerAngles = new Vector3(rot.x, transform.eulerAngles.y, rot.z);
             }
         }
     }
